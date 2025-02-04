@@ -1,0 +1,22 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 22  # Adjust the version as needed.
+    commands:
+      - echo "Installing NPM dependencies..."
+      - npm install
+  build:
+    commands:
+      - echo "Building the Node.js application..."
+      # If you have a build script defined in package.json, e.g., "npm run build"
+      - npm run build || echo "No build step defined"
+  post_build:
+    commands:
+      - echo "Packaging application..."
+      # Zip all files. Alternatively, specify files/directories as needed.
+      - zip -r application_saran.zip .
+artifacts:
+  files:
+    - application_saran.zip
